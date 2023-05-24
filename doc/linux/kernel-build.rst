@@ -190,6 +190,18 @@ Use ``nsim_fast=1`` in props file if you have nSIM Pro license.
 
 For more information visit this page: `How to run ARC Linux kernel and debug <https://github.com/foss-for-synopsys-dwc-arc-processors/linux/wiki/How-to-run-ARC-Linux-kernel-and-debug-%28with-MetaWare-Debugger%29>`_
 
+
+Running on QEMU
+---------------
+
+The same ARC HS kernel image as for nSIM may be used for running on QEMU:
+
+.. code-block:: shell
+
+    qemu-system-arc -M virt -cpu archs -display none -nographic -monitor none -m 2G \
+                    -kernel /images/vmlinux
+
+
 Using different Linux configuration
 -----------------------------------
 
@@ -503,6 +515,12 @@ Then run the image:
 
     nsimdrv -propsfile hs5x.props images/loader
 
+Running on QEMU:
+
+.. code-block:: shell
+
+    qemu-system-arc -M virt -cpu hs5x -M virt,ram_start=0 -m 2G \
+                    -display none -nographic -monitor none -kernel images/loader
 
 Linux for ARC HS68
 --------------------
@@ -597,3 +615,11 @@ Then run the image:
 .. code-block:: shell
 
     nsimdrv -propsfile hs6x.props images/loader
+
+
+Running on QEMU:
+
+.. code-block:: shell
+
+    qemu-system-arc64 -M virt -cpu hs6x -M virt,ram_start=0 -m 2G \
+                      -display none -nographic -monitor none -kernel images/loader
